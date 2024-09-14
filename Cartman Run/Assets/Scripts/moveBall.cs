@@ -13,8 +13,8 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 2.5f;
-    public float maxSpeed = 10.0f;
+    public float speed = 10.0f;
+    public float maxSpeed = 40.0f;
     private Rigidbody rb;      
 
     void Start()
@@ -30,7 +30,7 @@ public class BallController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
         rb.AddForce(movement * speed);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        //rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
 }
 

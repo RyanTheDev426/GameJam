@@ -1,18 +1,29 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class RockBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        //Put starting velocity and starting direction for rocks
+        Vector3 rockVelocity = new Vector3(10, 0, 0);
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        transform.LookAt(playerObject.transform.position);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnColliderEnter(Collider other)
     {
-        //Put code for projectile colliding with the player, with an else if statement for if it collides with anything else.
+        if (other.CompareTag("Terrain"))
+        {
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Player"))
+        {
+            //Remove Hp/kill cartman command, then delete this rock.
+        }
     }
 }
