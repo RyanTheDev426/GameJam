@@ -20,28 +20,28 @@ public class TiltPlatform : MonoBehaviour
         {
             if (rotation.z >= 344 || rotation.z <= 15)
             {
-                transform.Rotate(0f, 0f, 0.5f);
+                transform.Rotate(0f, 0f, 0.27f);
             }
         }
         if (Input.GetAxis("HorizontalKey") < -0.2)
         {
             if (rotation.z <= 16 || rotation.z >= 345)
             {
-                transform.Rotate(0f, 0f, -0.5f);
+                transform.Rotate(0f, 0f, -0.27f);
             }
         }
         if (Input.GetAxis("VerticalKey") > 0.2)
         {
             if (rotation.x >= 345 || rotation.x <= 16) 
             {
-                transform.Rotate(-0.5f, 0f, 0f);
+                transform.Rotate(-0.27f, 0f, 0f);
             }
         }
         if (Input.GetAxis("VerticalKey") < -0.2)
         {
             if (rotation.x >= 344 || rotation.x <= 15)
             {
-                transform.Rotate(0.5f, 0f, 0f);
+                transform.Rotate(0.27f, 0f, 0f);
             }
         }
     }
