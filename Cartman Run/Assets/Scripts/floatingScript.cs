@@ -1,3 +1,11 @@
+/*
+ * CPI 211 Game Jam 1
+ * - Jimmy Vongphosy 
+ * 
+ * Description: Script floats and spins an object (Used for collectibles)
+ * 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

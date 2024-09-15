@@ -2,7 +2,7 @@
  * CPI 211 Game Jam 1
  * - Jimmy Vongphosy 
  * 
- * Description: Script that created the 'bumper' functionalities for obstacles while ignoring the floor's collision
+ * Description: Script that created the 'bumper' functionalities for obstacles
  * 
  */
 
@@ -10,33 +10,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBounce : MonoBehaviour
+public class bumperBounce : MonoBehaviour
 {
-    public float bounceForce = 10f;
+    public float bounceForce = 10f; //Bump power
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        Transform collidedTransform = collision.gameObject.transform;
 
-        while (collidedTransform != null)
+        GameObject otherObject  = other.gameObject;
+
+        if (otherObject.CompareTag("Player"))
         {
-            if (collidedTransform.CompareTag("Bumper")) //Issue: Collison keeps detecting parent object and not children tagged "Bumper"
-            {
-                Debug.Log("Collision detected with bumper: " + collidedTransform.name);
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    Vector3 bounceDirection = collision.contacts[0].normal;
-                    rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
-                }
-                return;
-            }
-            collidedTransform = collidedTransform.parent;
-        }
+            Debug.Log("Collision detected with bumper: " + other.gameObject.name); //Debug purpose
 
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 bounceDirection = other.contacts[0].normal;
+                rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            Debug.Log("Collision detected with: " + other.gameObject.name);
+        }
     }
-}
+ }
 
 
 
