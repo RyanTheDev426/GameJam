@@ -12,12 +12,15 @@ using UnityEngine;
 
 public class collectibleScript : MonoBehaviour
 {
+    public int hats = 0;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Collectible"))
         {
             Debug.Log("Collected");
-            Destroy(gameObject);
+            Debug.Log(hats);
+            Destroy(other.gameObject);
+            hats++;
         }
     }
 }
