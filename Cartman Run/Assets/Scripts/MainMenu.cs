@@ -15,4 +15,8 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    public void HelpButton()
+    {
+        SceneManager.LoadScene("HelpScreen");
+    }
 }

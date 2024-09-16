@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CartmanRun.unity
     guid: df5bfb634f5adf04fa565811aeee48d5
+  - enabled: 1
+    path: Assets/Scenes/HelpScreen.unity
+    guid: 548d9c8a155c6274492b9a3bb51db79c
   m_configObjects: {}
