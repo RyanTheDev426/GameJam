@@ -12,7 +12,7 @@ using UnityEngine;
 
 public class bumperBounce : MonoBehaviour
 {
-    public float bounceForce = 10f; //Bump power
+    public float bounceForce = 1000f; //Bump power
 
     private void OnCollisionEnter(Collision other)
     {
@@ -29,10 +29,6 @@ public class bumperBounce : MonoBehaviour
                 Vector3 bounceDirection = other.contacts[0].normal;
                 rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
             }
-        }
-        else
-        {
-            Debug.Log("Collision detected with: " + other.gameObject.name);
         }
     }
  }
