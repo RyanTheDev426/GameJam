@@ -7,17 +7,18 @@ public class DoorController : MonoBehaviour
     [SerializeField] private Animator myDoor = null;
     [SerializeField] private bool openTrigger = false;
     [SerializeField] private bool closeTrigger = false;
+    [SerializeField] private int numHats;
     private int hat_count = 0;
     public collectibleScript hat;
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         hat = FindObjectOfType<collectibleScript>();
         hat_count = hat.hats;
         if (other.CompareTag("Player"))
         {
-            if (openTrigger && hat_count >= 2)
+            if (openTrigger && hat_count >= numHats)
             {
                 myDoor.Play("Door Opening", 0, 0.0f);
                 gameObject.SetActive(false);
