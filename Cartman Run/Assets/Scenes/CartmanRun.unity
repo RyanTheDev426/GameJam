@@ -1760,6 +1760,7 @@ MonoBehaviour:
   myDoor: {fileID: 995987113}
   openTrigger: 0
   closeTrigger: 1
+  numHats: 2
   hat: {fileID: 0}
 --- !u!1 &1287441652 stripped
 GameObject:
@@ -2277,6 +2278,7 @@ MonoBehaviour:
   myDoor: {fileID: 995987113}
   openTrigger: 1
   closeTrigger: 0
+  numHats: 2
   hat: {fileID: 0}
 --- !u!4 &1691842749 stripped
 Transform:
