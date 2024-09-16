@@ -10,6 +10,7 @@ TagManager:
   - FirstHomeless
   - SecondHomeless
   - AussieHomeless
+  - thrownProjectile
   layers:
   - Default
   - TransparentFX
