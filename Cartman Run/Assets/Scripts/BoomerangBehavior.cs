@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -7,28 +8,36 @@ using UnityEngine;
 public class BoomerangBehavior : MonoBehaviour
 {
     float moveSpeed = 5f;
-    float timer = 30f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        transform.LookAt(playerObject.transform.position);
-    }
+    public Boolean rockThrown = false;
+    Boolean moving = false;
+    float timer = 250f;
     void Update()
     {
-        timer--;
-        if(timer > 0)
+        if (rockThrown == true)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             transform.LookAt(playerObject.transform.position);
+            rockThrown = false;
+            moving = true;
         }
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        if (moving == true)
+        {
+            if(timer > 0)
+            {
+                timer--;
+                GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                transform.LookAt(playerObject.transform.position);
+            }
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+
     }
     void OnColliderEnter(Collider other)
     {
-        if (other.CompareTag("Terrain"))
+        if (other.CompareTag("Terrain") || other.CompareTag("Bumper"))
         {
-            Destroy(gameObject);
+            transform.position = new Vector3(300, 300, 300);
+            moving = false;
         }
         else if (other.CompareTag("Player"))
         {

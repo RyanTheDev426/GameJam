@@ -41,7 +41,24 @@ public class HomelessThrowingBehavior : MonoBehaviour
         }
         else if (gameObject.CompareTag("SecondHomeless") && FindObjectOfType<HomelessScript>().homelessDeployed >= 2)
         {
-
+            if (timer <= 0f)
+            {
+                timer = Random.Range(500f, 1500f);
+                if (currentRockIndex < rockArray.Length)
+                {
+                    RockBehavior nextRock = rockArray[currentRockIndex];
+                    nextRock.rockThrown = true;
+                    nextRock.transform.position = transform.position;
+                    currentRockIndex++;
+                }
+                else
+                {
+                    RockBehavior nextRock = rockArray[0];
+                    nextRock.rockThrown = true;
+                    nextRock.transform.position = transform.position;
+                    currentRockIndex = 1;
+                }
+            }
         }
         else if (gameObject.CompareTag("AussieHomeless") && FindObjectOfType<HomelessScript>().homelessDeployed >= 1)
         {
