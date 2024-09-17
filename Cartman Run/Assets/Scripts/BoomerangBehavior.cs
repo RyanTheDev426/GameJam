@@ -34,6 +34,7 @@ public class BoomerangBehavior : MonoBehaviour
     }
     void OnColliderEnter(Collider other)
     {
+        Debug.Log("collision indeed");
         if (other.CompareTag("Terrain") || other.CompareTag("Bumper"))
         {
             transform.position = new Vector3(300, 300, 300);
@@ -41,7 +42,8 @@ public class BoomerangBehavior : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            //Remove Hp/kill cartman command, then delete this rock.
+            PlayerHP health = FindObjectOfType<PlayerHP>();
+            health.HP--;
         }
     }
 }
