@@ -34,7 +34,8 @@ public class RockBehavior : MonoBehaviour
         }
         else if(other.CompareTag("Player"))
         {
-            //Remove Hp/kill cartman command, then delete this rock.
+            PlayerHP health = FindObjectOfType<PlayerHP>();
+            health.HP--;
         }
     }
 }
