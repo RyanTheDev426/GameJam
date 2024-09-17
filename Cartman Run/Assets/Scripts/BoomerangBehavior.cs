@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BoomerangBehavior : MonoBehaviour
 {
-    float moveSpeed = 5f;
+    float moveSpeed = 10f;
     public Boolean rockThrown = false;
     Boolean moving = false;
     float timer = 250f;

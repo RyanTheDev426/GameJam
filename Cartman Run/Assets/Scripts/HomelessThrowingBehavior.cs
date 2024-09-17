@@ -7,12 +7,15 @@ public class HomelessThrowingBehavior : MonoBehaviour
     // Start is called before the first frame update
     // Update is called once per frame
     RockBehavior[] rockArray;
+    BoomerangBehavior[] boomerArray;
     int currentRockIndex = 0;
+    int currentBoomerIndex = 0;
     float timer = 10f;
 
     void Start()
     {
         rockArray = FindObjectsOfType<RockBehavior>();
+        boomerArray = FindObjectsOfType<BoomerangBehavior>();
     }
     void Update()
     {
@@ -60,9 +63,26 @@ public class HomelessThrowingBehavior : MonoBehaviour
                 }
             }
         }
-        else if (gameObject.CompareTag("AussieHomeless") && FindObjectOfType<HomelessScript>().homelessDeployed >= 1)
+        else if (gameObject.CompareTag("AussieHomeless") && FindObjectOfType<HomelessScript>().homelessDeployed >= 3)
         {
-
+            if (timer <= 0f)
+            {
+                timer = Random.Range(500f, 750f);
+                if (currentBoomerIndex < boomerArray.Length)
+                {
+                    BoomerangBehavior nextBoomer = boomerArray[currentBoomerIndex];
+                    nextBoomer.rockThrown = true;
+                    nextBoomer.transform.position = transform.position;
+                    currentBoomerIndex++;
+                }
+                else
+                {
+                    BoomerangBehavior nextBoomer = boomerArray[0];
+                    nextBoomer.rockThrown = true;
+                    nextBoomer.transform.position = transform.position;
+                    currentBoomerIndex = 1;
+                }
+            }
         }
     }
 }
