@@ -32,18 +32,20 @@ public class BoomerangBehavior : MonoBehaviour
         }
 
     }
-    void OnColliderEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collision indeed");
         if (other.CompareTag("Terrain") || other.CompareTag("Bumper"))
         {
-            transform.position = new Vector3(300, 300, 300);
+            gameObject.transform.position = new Vector3(300f, 300f, 300f);
             moving = false;
         }
         else if (other.CompareTag("Player"))
         {
+            gameObject.transform.position = new Vector3(300f, 300f, 300f);
             PlayerHP health = FindObjectOfType<PlayerHP>();
             health.HP--;
+            moving = false;
         }
     }
 }
