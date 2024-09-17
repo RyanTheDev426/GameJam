@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RockBehavior : MonoBehaviour
 {
-    float moveSpeed = 5f;
+    float moveSpeed = 10f;
     public Boolean rockThrown = false;
     Boolean moving = false;
     void Update()
