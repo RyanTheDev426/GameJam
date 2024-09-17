@@ -15,6 +15,8 @@ public class HealthScript : MonoBehaviour
 
     void Update()
     {
+        PlayerHP playerHealth = FindObjectOfType<PlayerHP>();
+        health = playerHealth.HP;
         if(health > numHearts)
         {
             health = numHearts;
